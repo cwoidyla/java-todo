@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webapp.todo.TodoService;
-
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	private LoginService authentication = new LoginService();
-	private TodoService ts = new TodoService();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,9 +31,9 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		boolean authenticated = authentication.validateUser(name, password);
 		if (authenticated) {
-			request.setAttribute("name", name);
-			request.setAttribute("todos", ts.retrieveTodos());
-			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
+			response.sendRedirect("/todo.do");
+			//request.setAttribute("name", name);
+			//request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
 		}
 		else {
 			String errorMsg = "Incorrect username or password!";
