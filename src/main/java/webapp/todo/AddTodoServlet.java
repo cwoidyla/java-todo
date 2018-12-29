@@ -8,14 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/delete-todo.do")
-public class DeleteTodoServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/add-todo.do")
+public class AddTodoServlet extends HttpServlet {
 
 	private TodoService todoService = new TodoService();
 
-	protected void doGet(HttpServletRequest request,
+	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		todoService.deleteTodo(new Todo(request.getParameter("todo")));
+		String newTodo = request.getParameter("todo");
+		todoService.addTodo(new Todo(newTodo));
 		response.sendRedirect("/todo.do");
 	}
 }

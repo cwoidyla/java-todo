@@ -40,8 +40,8 @@ padding: 0 15px;
 				<li class="active"><a href="/todo.do">Todos</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/login.do">Login</a></li>
-			</ul>
+			    <li><a href="/logout.do">Logout</a></li>
+		    </ul>
 		</div>
 
 	</nav>
@@ -60,7 +60,7 @@ padding: 0 15px;
 		<p>
 			<font color="red">${errorMessage}</font>
 		</p>
-		<form method="POST" action="/todo.do">
+		<form method="POST" action="/add-todo.do">
 			New Todo : <input name="todo" type="text" /> <input name="add"
 				type="submit" />
 		</form>
