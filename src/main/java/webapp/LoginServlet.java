@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		boolean authenticated = authentication.validateUser(name, password);
 		if (authenticated) {
+			request.getSession().setAttribute("name", name);
 			response.sendRedirect("/todo.do");
 			//request.setAttribute("name", name);
 			//request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);

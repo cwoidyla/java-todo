@@ -10,7 +10,7 @@
 <h2>ToDos</h2>
 <ol>
 <c:forEach items="${todos}" var="todo">
-   <li>${todo.name}</li>
+   <li>${todo.name} <a href="/delete-todo.do?todo=${todo.name}">Delete</a></li> 
 </c:forEach>
 </ol>
 
