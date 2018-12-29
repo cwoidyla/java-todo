@@ -8,9 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webapp.todo.TodoService;
+
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 
+	private LoginService authentication = new LoginService();
+	private TodoService ts = new TodoService();
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -23,13 +28,13 @@ public class LoginServlet extends HttpServlet {
 			throws IOException, ServletException {
 		//System.out.println(request.getParameter("name"));
 		//System.out.println(request.getParameter("password"));
-		LoginService authentication = new LoginService();
+		
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		boolean authenticated = authentication.validateUser(name, password);
-		request.setAttribute("name", name);
-		request.setAttribute("password", password);
 		if (authenticated) {
+			request.setAttribute("name", name);
+			request.setAttribute("todos", ts.retrieveTodos());
 			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
 		}
 		else {

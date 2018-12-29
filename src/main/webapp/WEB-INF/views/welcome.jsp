@@ -3,7 +3,10 @@
 <title>Home</title>
 </head>
 <body>
-<p>Welcome ${name}!</p>
-<p>Your password is ${password}</p>
+<h1>Welcome ${name}</h1>
+<div>
+<h2>ToDos</h2>
+<p>${todos }</p>
+</div>
 </body>
 </html>
