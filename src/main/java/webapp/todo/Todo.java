@@ -2,12 +2,14 @@ package webapp.todo;
 
 public class Todo {
 
-	public Todo(String name) {
+	public Todo(String name, String category) {
 		super();
 		this.name = name;
+		this.category = category;
 	}
 
 	private String name;
+	private String category;
 
 	public String getName() {
 		return name;
@@ -15,6 +17,14 @@ public class Todo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	@Override

@@ -1,12 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Home</title>
-
-<!-- Bootstrap core CSS -->
+<title>Todos</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -16,12 +12,6 @@
 	width: 100%;
 	height: 60px;
 	background-color: #f5f5f5;
-}
-
-.footer .container {
-width: auto;
-max-width: 680px;
-padding: 0 15px;
 }
 </style>
 </head>
@@ -44,20 +34,13 @@ padding: 0 15px;
 	</nav>
 
 	<div class="container">
-		<H1>Welcome ${name}</H1>
-
-		Your Todos are
-		<ol>
-			<c:forEach items="${todos}" var="todo">
-				<li>${todo.name}&nbsp;${todo.category}&nbsp;<a
-					href="/delete-todo.do?todo=${todo.name}&category=${todo.category}">Delete</a></li>
-			</c:forEach>
-		</ol>
-
-		<p>
-			<font color="red">${errorMessage}</font>
-		</p>
-		<a href="/add-todo.do">Add New Todo</a>
+		Your New Action Item:
+		<form method="POST" action="/add-todo.do">
+			Description : <input name="todo" type="text" /> <BR/> 
+			Category : <input name="category" type="text" /> <BR/>
+			<input name="add"
+				type="submit" />
+		</form>
 	</div>
 
 	<footer class="footer">
