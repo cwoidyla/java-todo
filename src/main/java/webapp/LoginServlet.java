@@ -23,8 +23,20 @@ public class LoginServlet extends HttpServlet {
 			throws IOException, ServletException {
 		//System.out.println(request.getParameter("name"));
 		//System.out.println(request.getParameter("password"));
-		request.setAttribute("name", request.getParameter("name"));
-		request.setAttribute("password", request.getParameter("password"));
-		request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
+		LoginService authentication = new LoginService();
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		boolean authenticated = authentication.validateUser(name, password);
+		request.setAttribute("name", name);
+		request.setAttribute("password", password);
+		if (authenticated) {
+			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
+		}
+		else {
+			String errorMsg = "Incorrect username or password!";
+			request.setAttribute("error",errorMsg);
+			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		}
+		
 	}
 }
