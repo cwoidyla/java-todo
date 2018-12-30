@@ -29,7 +29,7 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Todo [name=" + name + "]";
+		return String.format("Todo [name=%s, category=%s]", name, category);
 	}
 	
 	@Override
